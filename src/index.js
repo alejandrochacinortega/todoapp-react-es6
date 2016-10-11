@@ -1,3 +1,5 @@
-let message = "Ready to start";
+import React from 'react';
+import { render } from 'react-dom';
+import App from 'components/App';
 
-console.log(message);
+render(<App/>, document.getElementById('app'));
