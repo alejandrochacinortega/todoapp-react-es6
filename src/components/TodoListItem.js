@@ -8,6 +8,21 @@ class TodoListItem extends React.Component {
     }
   }
 
+  renderTaskSection() {
+    const {task, isCompleted} = this.props;
+    const taskStyle           = {
+      color : isCompleted ? 'green' : 'red',
+      cursor: 'pointer'
+    };
+
+
+    return (
+      <td style={taskStyle} onClick={this.props.toggleTask.bind(this, task)}>
+        {task}
+      </td>
+    )
+  }
+
   renderActionsSection() {
     if (this.state.isEditing) {
       return (
@@ -29,7 +44,7 @@ class TodoListItem extends React.Component {
   render() {
     return (
       <tr>
-        <td>{this.props.task}</td>
+        <td>{this.renderTaskSection()}</td>
         {this.renderActionsSection()}
       </tr>
     )

@@ -29,9 +29,15 @@ class App extends React.Component {
       <div>
         <h1>React todos app</h1>
         <CreateTodo createTask={this.createTask.bind(this)}/>
-        <TodosList todos={this.state.todos}/>
+        <TodosList todos={this.state.todos} toggleTask={this.toggleTask.bind(this)}/>
       </div>
     );
+  }
+
+  toggleTask(task) {
+    const foundTodo = _.find(this.state.todos, todo => todo.task == task);
+    foundTodo.isCompleted = !foundTodo.isCompleted;
+    this.setState({ todos: this.state.todos})
   }
 
   createTask(task) {
